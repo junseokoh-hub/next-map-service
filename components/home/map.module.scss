@@ -1,0 +1,11 @@
+@use './detail.module';
+
+.map {
+  width: 100vw;
+  height: 100vh;
+
+  // naver logo control 위치 조정
+  & > div:nth-of-type(2) {
+    bottom: detail.$header-height + detail.$section-padding-top !important;
+  }
+}
