@@ -18,6 +18,8 @@ const HomePage: NextPage<Props> = ({ stores }) => {
     initializeStores(stores);
   }, [initializeStores, stores]);
 
+  useEffect(() => {}, []);
+
   return (
     <section>
       <NextSeo
@@ -43,7 +45,9 @@ const HomePage: NextPage<Props> = ({ stores }) => {
 export default HomePage;
 
 export const getStaticProps = async () => {
-  const stores = (await import('@/public/stores.json')).default;
+  const stores = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
+  ).then((res) => res.json());
 
   return {
     props: { stores },
